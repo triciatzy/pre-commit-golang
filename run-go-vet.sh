@@ -1,5 +1,6 @@
 #!/bin/sh
 
-for DIR in $(echo "$@"|xargs -n1 dirname|sort -u); do
-    go vet ./"$DIR"
+pkg=$(go list -m)
+for dir in $(echo $@|xargs -n1 dirname|sort -u); do
+  go vet $pkg/$dir
 done
